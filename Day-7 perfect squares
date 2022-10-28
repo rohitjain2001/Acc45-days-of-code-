@@ -1,0 +1,19 @@
+class Solution {
+public:
+   int numSquares(int n)
+{
+       //INT_MAX is a macro which indicates the maximum number from the entered array
+    vector<int> square(n+1,INT_MAX-1);
+    
+    square[0] = 0;
+    square[1] = 1;
+    for(int i=2;i<=n;i++){
+        for(int j=1;j*j<=n;j++){
+            if(i>=j*j){
+                square[i] = min(square[i],1+square[i-j*j]);
+            }
+        }
+    }
+    return square[n];
+   }
+};
