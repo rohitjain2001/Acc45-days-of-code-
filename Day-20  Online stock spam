@@ -1,0 +1,13 @@
+class StockSpanner {
+ public:
+  int next(int price) {
+    int sspan = 1;
+    while (!stack.empty() && stack.top().first <= price)
+      sspan += stack.top().second, stack.pop();
+    stack.emplace(price, sspan);//to insert new elements in the stack and that eelement will be in the top of the stack
+    return sspan;
+  }
+
+ private:
+  stack<pair<int, int>> stack; // (price, span)
+};
